@@ -1,0 +1,7 @@
+build/
+dist/
+nbproject/private/
+*.class
+*.jar
+vistaverde_datos.dat
+errores_vistaverde.log
