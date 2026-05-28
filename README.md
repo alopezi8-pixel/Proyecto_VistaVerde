@@ -18,12 +18,8 @@ El sistema permite al administrador del condominio gestionar de forma completa:
 
 ## 👥 Integrantes del Equipo
 
-| Nombre | Carné | Rol |
-|--------|-------|-----|
-| [Nombre 1] | [Carné 1] | Líder de equipo / Backend (modelos y lógica) |
-| [Nombre 2] | [Carné 2] | Frontend (pantallas Swing) |
-| [Nombre 3] | [Carné 3] | Documentación y pruebas |
-| [Nombre 4] | [Carné 4] | Integración y versionamiento |
+| Nombre                        | Carné        | Rol                                          | 
+| Andres Emanuel López Illescas | 0900-24-4091 | Líder de equipo / Backend (modelos y lógica) |
 
 ---
 
