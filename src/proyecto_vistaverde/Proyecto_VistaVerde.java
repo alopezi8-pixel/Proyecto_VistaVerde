@@ -1,22 +1,24 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
- */
 package proyecto_vistaverde;
 
-/**
- *
- * @author andre_8v8gtn3
- */
+import com.formdev.flatlaf.FlatLightLaf;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
+
 public class Proyecto_VistaVerde {
     public static void main(String[] args) {
         
+        // Aplicar FlatLaf - Punto extra +2 diseño
+        try {
+            UIManager.setLookAndFeel(new FlatLightLaf());
+        } catch (UnsupportedLookAndFeelException e) {
+            ManejadorErrores.registrar(e, "Main - FlatLaf");
+        }
+        
+        // Cargar datos guardados
         Condominio condominio = Persistencia.cargar();
-        
-        
         Login.setCondominio(condominio);
         
-        // Abrir la pantalla de Login
+        // Abrir Login
         java.awt.EventQueue.invokeLater(() -> {
             new Login().setVisible(true);
         });

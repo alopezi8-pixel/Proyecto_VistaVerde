@@ -37,14 +37,14 @@ public class ManejadorErrores {
         }
     }
 
-    public static void mostrarMensaje(javax.swing.JLabel label, String mensaje) {
-        label.setForeground(java.awt.Color.RED);
-        label.setText(mensaje);
-    }
+public static void mostrarMensaje(javax.swing.JLabel label, String mensaje) {
+    label.setForeground(java.awt.Color.RED);
+    label.setText("<html>" + mensaje + "</html>");
+}
 
-    public static void mostrarExito(javax.swing.JLabel label, String mensaje) {
-        label.setForeground(new java.awt.Color(0, 130, 0));
-        label.setText(mensaje);
-    }
+public static void mostrarExito(javax.swing.JLabel label, String mensaje) {
+    label.setForeground(new java.awt.Color(0, 130, 0));
+    label.setText("<html>" + mensaje + "</html>");
+}
     
 }

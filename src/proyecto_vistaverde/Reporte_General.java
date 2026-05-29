@@ -4,6 +4,9 @@
  */
 package proyecto_vistaverde;
 
+import java.awt.HeadlessException;
+import java.io.IOException;
+
 /**
  *
  * @author andre_8v8gtn3
@@ -17,6 +20,29 @@ public Reporte_General(Condominio condominio) {
     
     lblMensaje.setText("");
 cargarReporte();
+
+    // Llenar combo de meses
+String[] meses = {
+    "Enero","Febrero","Marzo","Abril","Mayo","Junio",
+    "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
+};
+for (String mes : meses) {
+    cmbMes.addItem(mes);
+}
+
+// Llenar combo de años
+int anioActual = java.time.LocalDate.now().getYear();
+cmbAnio.addItem(String.valueOf(anioActual - 1));
+cmbAnio.addItem(String.valueOf(anioActual));
+cmbAnio.addItem(String.valueOf(anioActual + 1));
+
+// Seleccionar mes y año actual por defecto
+cmbMes.setSelectedIndex(java.time.LocalDate.now().getMonthValue() - 1);
+cmbAnio.setSelectedItem(String.valueOf(anioActual));
+
+lblMensaje.setText("");
+cargarReporte();
+
 }
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Reporte_General.class.getName());
 
@@ -46,6 +72,10 @@ cargarReporte();
         jLabel3 = new javax.swing.JLabel();
         btnActualizar = new javax.swing.JButton();
         lblMensaje = new javax.swing.JLabel();
+        btnExportar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        cmbMes = new javax.swing.JComboBox<>();
+        cmbAnio = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -79,6 +109,11 @@ cargarReporte();
 
         lblMensaje.setText(" ");
 
+        btnExportar.setText("Exportar TXT");
+        btnExportar.addActionListener(this::btnExportarActionPerformed);
+
+        jLabel4.setText("Mes a consultar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,13 +143,29 @@ cargarReporte();
                                         .addComponent(jLabel2)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(lblTotalEsperado, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
-                                .addComponent(btnActualizar)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnActualizar, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(btnExportar, javax.swing.GroupLayout.Alignment.TRAILING))))
                         .addGap(24, 24, 24))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(cmbAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbAnio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -128,10 +179,11 @@ cargarReporte();
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(lblFaltante))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-                .addComponent(lblMensaje)
-                .addContainerGap())
+                    .addComponent(lblFaltante)
+                    .addComponent(btnExportar))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblMensaje, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
         pack();
@@ -140,6 +192,86 @@ cargarReporte();
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
     cargarReporte();
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportarActionPerformed
+
+    try {
+    int mes  = cmbMes.getSelectedIndex() + 1;
+    int anio = Integer.parseInt(cmbAnio.getSelectedItem().toString());
+
+    String[] nombreMeses = {
+        "Enero","Febrero","Marzo","Abril","Mayo","Junio",
+        "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
+    };
+
+    // Elegir donde guardar el archivo
+    javax.swing.JFileChooser fileChooser = new javax.swing.JFileChooser();
+    fileChooser.setDialogTitle("Guardar Reporte");
+    fileChooser.setSelectedFile(new java.io.File(
+        "Reporte_VistaVerde_" + nombreMeses[mes - 1] + "_" + anio + ".txt"
+    ));
+
+    int opcion = fileChooser.showSaveDialog(this);
+    if (opcion != javax.swing.JFileChooser.APPROVE_OPTION) return;
+
+    java.io.File archivo = fileChooser.getSelectedFile();
+
+    // Escribir el reporte
+    try (java.io.PrintWriter pw = new java.io.PrintWriter(
+            new java.io.FileWriter(archivo))) {
+
+        pw.println("================================================");
+        pw.println("   REPORTE GENERAL - CONDOMINIO VISTA VERDE     ");
+        pw.println("   " + nombreMeses[mes - 1] + " " + anio);
+        pw.println("================================================");
+        pw.println();
+        pw.printf("%-10s %-30s %-12s %-15s%n",
+            "Casa", "Propietario", "Estado", "Total Año");
+        pw.println("------------------------------------------------");
+
+        for (Casa c : condominio.getCasas()) {
+            String propietario = c.tienePropietario()
+                ? c.getPropietario().getNombreCompleto()
+                : "Sin propietario";
+            String estado = c.existePago(mes, anio) ? "Pagado" : "Pendiente";
+            double totalAnio = c.getTotalPagadoAnio(anio);
+
+            pw.printf("%-10s %-30s %-12s Q%-14.2f%n",
+                "Casa " + c.getNumeroCasa(),
+                propietario,
+                estado,
+                totalAnio
+            );
+        }
+
+        pw.println("------------------------------------------------");
+        pw.println();
+
+        double recaudado = condominio.getTotalRecaudadoMes(mes, anio);
+        double esperado  = condominio.getTotalEsperado();
+        double faltante  = esperado - recaudado;
+
+        pw.printf("Total recaudado este mes : Q%.2f%n", recaudado);
+        pw.printf("Total esperado este mes  : Q%.2f%n", esperado);
+        pw.printf("Faltante                 : Q%.2f%n", faltante);
+        pw.println();
+        pw.println("================================================");
+        pw.println("Generado por Sistema Vista Verde - " + 
+            java.time.LocalDate.now());
+        pw.println("================================================");
+    }   catch (IOException ex) {
+            System.getLogger(Reporte_General.class.getName()).log(System.Logger.Level.ERROR, (String) null, ex);
+        }
+
+    ManejadorErrores.mostrarExito(lblMensaje,
+        "Reporte exportado correctamente en: " + archivo.getAbsolutePath());
+
+} catch (HeadlessException e) {
+    ManejadorErrores.registrar(e, "Reporte_General - btnExportar");
+    ManejadorErrores.mostrarMensaje(lblMensaje, "Error al exportar el reporte. Intente de nuevo.");
+}  
+        
+    }//GEN-LAST:event_btnExportarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -168,9 +300,13 @@ cargarReporte();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnActualizar;
+    private javax.swing.JButton btnExportar;
+    private javax.swing.JComboBox<String> cmbAnio;
+    private javax.swing.JComboBox<String> cmbMes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFaltante;
     private javax.swing.JLabel lblMensaje;
@@ -181,33 +317,32 @@ cargarReporte();
 
 private void cargarReporte() {
     try {
-        int mes  = java.time.LocalDate.now().getMonthValue();
-        int anio = java.time.LocalDate.now().getYear();
+        int mes  = cmbMes.getSelectedIndex() + 1;
+        int anio = Integer.parseInt(cmbAnio.getSelectedItem().toString());
 
         String[] nombreMeses = {
             "Enero","Febrero","Marzo","Abril","Mayo","Junio",
             "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"
         };
 
+        // Columnas
         String[] columnas = {
             "Casa", "Propietario", "Estado " + nombreMeses[mes - 1], "Total Año"
         };
 
+        // Filas
         Object[][] filas = new Object[Condominio.TOTAL_CASAS][4];
-
         for (int i = 0; i < Condominio.TOTAL_CASAS; i++) {
             Casa c = condominio.getCasa(i + 1);
-
             filas[i][0] = "Casa " + c.getNumeroCasa();
-
             filas[i][1] = c.tienePropietario()
                 ? c.getPropietario().getNombreCompleto()
                 : "Sin propietario";
-
             filas[i][2] = c.existePago(mes, anio) ? "Pagado" : "Pendiente";
-
             filas[i][3] = "Q " + String.format("%.2f", c.getTotalPagadoAnio(anio));
         }
+
+        // Cargar tabla
         tblReporte.setModel(new javax.swing.table.DefaultTableModel(filas, columnas) {
             @Override
             public boolean isCellEditable(int row, int column) {
@@ -215,25 +350,26 @@ private void cargarReporte() {
             }
         });
 
-        double totalRecaudado = condominio.getTotalRecaudadoMes(mes, anio);
-        double totalEsperado  = condominio.getTotalEsperado();
-        double faltante       = totalEsperado - totalRecaudado;
+        // Totales
+        double recaudado = condominio.getTotalRecaudadoMes(mes, anio);
+        double esperado  = condominio.getTotalEsperado();
+        double faltante  = esperado - recaudado;
 
-        lblTotalRecaudado.setText("Q " + String.format("%.2f", totalRecaudado));
-        lblTotalEsperado.setText("Q "  + String.format("%.2f", totalEsperado));
+        lblTotalRecaudado.setText("Q " + String.format("%.2f", recaudado));
+        lblTotalEsperado.setText("Q "  + String.format("%.2f", esperado));
 
         if (faltante > 0) {
             lblFaltante.setForeground(java.awt.Color.RED);
             lblFaltante.setText("Q " + String.format("%.2f", faltante));
         } else {
             lblFaltante.setForeground(new java.awt.Color(0, 130, 0));
-            lblFaltante.setText("Q 0.00 - Recaudación completa");
+            lblFaltante.setText("Q 0.00 - Recaudacion completa");
         }
 
         ManejadorErrores.mostrarExito(lblMensaje,
             "Reporte de " + nombreMeses[mes - 1] + " " + anio + " cargado correctamente.");
 
-    } catch (Exception e) {
+    } catch (NumberFormatException e) {
         ManejadorErrores.registrar(e, "Reporte_General - cargarReporte");
         ManejadorErrores.mostrarMensaje(lblMensaje, "Error al cargar el reporte. Intente de nuevo.");
     }
