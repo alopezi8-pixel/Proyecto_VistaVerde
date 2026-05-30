@@ -40,16 +40,18 @@ lblFecha.setText(fechaTexto);
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        lblBienvenida = new javax.swing.JLabel();
         btnPropietario = new javax.swing.JButton();
         btnPago = new javax.swing.JButton();
         btnCuota = new javax.swing.JButton();
         btnReporte = new javax.swing.JButton();
         btnMorosas = new javax.swing.JButton();
         btnEstado = new javax.swing.JButton();
-        lblNombre = new javax.swing.JLabel();
-        lblFecha = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        lblNombre = new javax.swing.JLabel();
+        lblBienvenida = new javax.swing.JLabel();
+        lblFecha = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -58,81 +60,132 @@ lblFecha.setText(fechaTexto);
             }
         });
 
-        lblBienvenida.setText("Bienvenido, Administrador -");
-
+        btnPropietario.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnPropietario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/agregar1.png"))); // NOI18N
         btnPropietario.setText("Registrar Propietario");
+        btnPropietario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPropietario.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnPropietario.addActionListener(this::btnPropietarioActionPerformed);
 
+        btnPago.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/pago1.png"))); // NOI18N
         btnPago.setText("Registrar Pago");
+        btnPago.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnPago.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnPago.addActionListener(this::btnPagoActionPerformed);
 
+        btnCuota.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnCuota.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/configurar1.png"))); // NOI18N
         btnCuota.setText("Configurar Cuota");
+        btnCuota.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnCuota.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnCuota.addActionListener(this::btnCuotaActionPerformed);
 
+        btnReporte.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnReporte.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/reporte1.png"))); // NOI18N
         btnReporte.setText("Reporte General");
+        btnReporte.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnReporte.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnReporte.addActionListener(this::btnReporteActionPerformed);
 
+        btnMorosas.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnMorosas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/moroso (1).png"))); // NOI18N
         btnMorosas.setText("Casas Morosas");
+        btnMorosas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnMorosas.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnMorosas.addActionListener(this::btnMorosasActionPerformed);
 
+        btnEstado.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        btnEstado.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/estado1.png"))); // NOI18N
         btnEstado.setText("Estado de Cuenta");
+        btnEstado.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnEstado.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         btnEstado.addActionListener(this::btnEstadoActionPerformed);
 
+        jLabel1.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel1.setText("Seleccione el Menu");
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/condominio (1).png"))); // NOI18N
+
+        lblNombre.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         lblNombre.setText("Condominio Vista Verde");
 
+        lblBienvenida.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
+        lblBienvenida.setText("Bienvenido, Administrador -");
+
+        lblFecha.setFont(new java.awt.Font("Verdana", 0, 12)); // NOI18N
         lblFecha.setText("Mayo 2026");
 
-        jLabel1.setText("Seleccione el Menu");
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(12, 12, 12)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblNombre)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblBienvenida)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblFecha)
+                .addGap(15, 15, 15))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFecha)
+                    .addComponent(lblBienvenida)
+                    .addComponent(lblNombre))
+                .addContainerGap(19, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(16, 16, 16)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1)
+                    .addComponent(btnEstado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnReporte, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblBienvenida)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblFecha))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnPropietario)
-                            .addComponent(btnEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnPago, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnReporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnCuota, javax.swing.GroupLayout.DEFAULT_SIZE, 124, Short.MAX_VALUE)
-                            .addComponent(btnMorosas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                    .addComponent(lblNombre)
-                    .addComponent(jLabel1))
-                .addContainerGap(24, Short.MAX_VALUE))
+                    .addComponent(btnMorosas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCuota, javax.swing.GroupLayout.DEFAULT_SIZE, 161, Short.MAX_VALUE))
+                .addGap(23, 23, 23))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
-                .addComponent(lblNombre)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblBienvenida)
-                    .addComponent(lblFecha))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnPropietario, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnPago, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnCuota, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnEstado, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnReporte, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnMorosas, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnPago, javax.swing.GroupLayout.DEFAULT_SIZE, 82, Short.MAX_VALUE)
+                    .addComponent(btnPropietario, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnCuota, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnEstado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnMorosas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnReporte, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         pack();
@@ -206,6 +259,8 @@ System.exit(0);
     private javax.swing.JButton btnPropietario;
     private javax.swing.JButton btnReporte;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblBienvenida;
     private javax.swing.JLabel lblFecha;
     private javax.swing.JLabel lblNombre;

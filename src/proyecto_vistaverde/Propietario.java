@@ -16,6 +16,14 @@ public class Propietario implements Serializable {
         this.telefono          = telefono;
         this.correoElectronico = correoElectronico;
     }
+    private int mesRegistro;
+    private int anioRegistro;
+
+    public int getMesRegistro()          { return mesRegistro; }
+    public void setMesRegistro(int m)    { this.mesRegistro = m; }
+
+    public int getAnioRegistro()         { return anioRegistro; }
+    public void setAnioRegistro(int a)   { this.anioRegistro = a; }
 
     public String getNombreCompleto()             { return nombreCompleto; }
     public void   setNombreCompleto(String n)     { this.nombreCompleto = n; }

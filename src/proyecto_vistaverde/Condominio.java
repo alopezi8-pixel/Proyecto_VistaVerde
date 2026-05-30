@@ -58,12 +58,21 @@ public class Condominio implements Serializable {
         return total;
     }
 
-    public ArrayList<Casa> getCasasMorosas(int mes, int anio) {
-        ArrayList<Casa> morosas = new ArrayList<>();
-        for (Casa c : casas) {
-            if (c.tienePropietario() && !c.existePago(mes, anio))
+public ArrayList<Casa> getCasasMorosas(int mes, int anio) {
+    ArrayList<Casa> morosas = new ArrayList<>();
+    for (Casa c : casas) {
+        if (!c.tienePropietario()) continue;
+
+        int mesReg  = c.getPropietario().getMesRegistro();
+        int anioReg = c.getPropietario().getAnioRegistro();
+
+        // Solo contar como morosa si ya estaba registrada ese mes
+        if (anio > anioReg || (anio == anioReg && mes >= mesReg)) {
+            if (!c.existePago(mes, anio)) {
                 morosas.add(c);
+            }
         }
-        return morosas;
     }
+    return morosas;
+}
 }

@@ -14,6 +14,11 @@ public class Casa implements Serializable {
         this.propietario = null;
         this.pagos       = new ArrayList<>();
     }
+    private double cuotaEspecial = 0;
+
+public double getCuotaEspecial()         { return cuotaEspecial; }
+public void   setCuotaEspecial(double c) { this.cuotaEspecial = c; }
+public boolean tieneCuotaEspecial()      { return cuotaEspecial > 0; }
 
     public int          getNumeroCasa()              { return numeroCasa; }
     public Propietario  getPropietario()             { return propietario; }
@@ -25,9 +30,33 @@ public class Casa implements Serializable {
     // y si los meses anteriores del mismo anio ya fueron pagados
     public boolean registrarPago(int mes, int anio, double monto) {
         if (existePago(mes, anio)) return false;
-        for (int m = 1; m < mes; m++) {
-            if (!existePago(m, anio)) return false;
+        if (propietario == null)   return false;
+
+        int mesReg  = propietario.getMesRegistro();
+        int anioReg = propietario.getAnioRegistro();
+
+        if (mesReg == 0 || anioReg == 0) {
+            // Propietario sin fecha de registro — validación normal
+            for (int m = 1; m < mes; m++) {
+                if (!existePago(m, anio)) return false;
+            }
+        } else if (anio < anioReg) {
+            // Año anterior al registro — no permitir
+            return false;
+        } else if (anio == anioReg) {
+            // Mismo año — no puede pagar mes anterior al registro
+            if (mes < mesReg) return false;
+            // Validar meses pendientes desde el mes de registro
+            for (int m = mesReg; m < mes; m++) {
+                if (!existePago(m, anio)) return false;
+            }
+        } else {
+            // Año posterior — validar todos los meses
+            for (int m = 1; m < mes; m++) {
+                if (!existePago(m, anio)) return false;
+            }
         }
+
         pagos.add(new Pago(mes, anio, monto));
         return true;
     }
