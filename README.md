@@ -1,61 +1,48 @@
-# 🏘️ Sistema de Administración de Condominio Vista Verde
+# Sistema de Administración de Condominio Vista Verde
 
-Sistema de escritorio desarrollado en **Java Swing** para la gestión de cobro y control de cuotas de mantenimiento del Condominio Vista Verde (30 casas).
+Sistema de escritorio desarrollado en Java Swing para la gestión de cobro y control de cuotas de mantenimiento del Condominio Vista Verde (30 casas).
 
 ---
 
-## 📋 Descripción del Proyecto
+## Descripción del Proyecto
 
 El sistema permite al administrador del condominio gestionar de forma completa:
 - Registro de propietarios por casa
 - Registro y control de pagos de cuotas mensuales
-- Configuración del monto de la cuota
+- Configuración del monto de la cuota (global o por casa)
 - Generación de reportes generales y de morosos
+- Exportar reporte a archivo TXT
 - Persistencia de datos entre sesiones (no se pierden al cerrar)
-- Notificación por correo electrónico al registrar un pago *(punto extra)*
+- Notificación por correo electrónico al registrar un pago
 
 ---
 
-## 👥 Integrantes del Equipo
+## Integrantes del Equipo
 
-| Nombre                        | Carné        | Rol                                          | 
-| Andres Emanuel López Illescas | 0900-24-4091 | Líder de equipo / Backend (modelos y lógica) |
+| Nombre | Carné | Rol |
+|--------|-------|-----|
+| Andres Emanuel López Illescas | 0900-24-4091 | Desarrollador principal |
 
 ---
 
-## 🚀 Instrucciones para ejecutar el proyecto
+## Instrucciones para ejecutar el proyecto
 
 ### Requisitos
 - Java JDK 11 o superior
-- IDE recomendado: IntelliJ IDEA o Eclipse
+- Apache NetBeans 21 o superior
 
-### Librerías opcionales (puntos extra)
-| Librería | Para qué | Dónde descargar |
+### Librerias utilizadas
+| Libreria | Para que | Donde descargar |
 |----------|----------|----------------|
-| `flatlaf-3.x.x.jar` | Tema visual moderno | https://www.formdev.com/flatlaf/ |
-| `javax.mail.jar` | Envío de correos | https://eclipse-ee4j.github.io/mail/ |
+| `flatlaf-3.4.1.jar` | Tema visual moderno (FlatLaf) | https://www.formdev.com/flatlaf/ |
+| `jakarta.mail-2.0.1.jar` | Envio de correos electronicos | https://eclipse-ee4j.github.io/mail/ |
 
-### Pasos para compilar y ejecutar
-
-**Sin IDE (línea de comandos):**
-```bash
-# Compilar (desde la raíz del proyecto)
-javac -cp "src;libs/*" -d out src/model/*.java src/logic/*.java src/ui/*.java Main.java
-
-# Ejecutar
-java -cp "out;libs/*" Main
-```
-
-**Con IntelliJ IDEA:**
-1. Abrir la carpeta `VistaVerde` como proyecto
-2. Marcar `src` como Sources Root (clic derecho → Mark Directory As)
-3. Agregar los `.jar` de `libs/` en Project Structure → Libraries
-4. Ejecutar `Main.java`
-
-**Con Eclipse:**
-1. File → Import → Existing Project
-2. Añadir los `.jar` a Build Path
-3. Ejecutar como Java Application desde `Main.java`
+### Pasos para ejecutar en NetBeans
+1. Abrir Apache NetBeans
+2. File → Open Project
+3. Navegar hasta la carpeta `Proyecto_VistaVerde`
+4. Seleccionar la carpeta y hacer clic en Open Project
+5. Clic derecho en el proyecto → Run (o presionar F6)
 
 ### Credenciales de acceso
 | Campo | Valor |
@@ -65,89 +52,95 @@ java -cp "out;libs/*" Main
 
 ---
 
-## 📸 Capturas de Pantalla
+## Capturas de Pantalla
 
-> *(Insertar capturas reales del sistema aquí después de ejecutarlo)*
+### Login
+<img width="298" height="448" alt="image" src="https://github.com/user-attachments/assets/803c22e5-7966-4533-ab18-3e04715c51a1" />
 
-| Pantalla | Descripción |
-|----------|-------------|
-| Login | Acceso con credenciales del administrador |
-| Inicio | Menú principal con los 6 módulos |
-| Registro Propietario | Registro de dueños de cada casa |
-| Registro Pago | Registro de pagos mensuales |
-| Configurar Cuota | Modificar el monto de mantenimiento |
-| Estado de Cuenta | Ver historial de pagos por casa |
-| Reporte General | Tabla con el estado de las 30 casas |
-| Casas Morosas | Lista de casas sin pago del mes actual |
+### Menu Principal
+<img width="434" height="296" alt="image" src="https://github.com/user-attachments/assets/e9835dfd-f724-4847-b222-b56885c006cb" />
+
+### Registro de Propietario
+<img width="453" height="291" alt="image" src="https://github.com/user-attachments/assets/eb0f6636-6fb2-44ed-8bef-aa9b8e7a6eb1" />
+
+### Registro de Pago
+<img width="322" height="286" alt="image" src="https://github.com/user-attachments/assets/131e83a0-aa20-43ff-b260-22c0bb7abe96" />
+
+### Configurar Cuota
+<img width="248" height="289" alt="image" src="https://github.com/user-attachments/assets/4169d163-8abf-4377-9e32-025a173a05c2" />
+
+### Estado de Cuenta
+<img width="360" height="284" alt="image" src="https://github.com/user-attachments/assets/cce97aea-9337-49de-9e60-acdca81e0e93" />
+
+### Reporte General
+<img width="442" height="334" alt="image" src="https://github.com/user-attachments/assets/10f0d087-d4ad-469d-a300-7ef8e193eafb" />
+
+### Casas Morosas
+<img width="413" height="294" alt="image" src="https://github.com/user-attachments/assets/9d2342fb-4740-40de-b769-280c84951f29" />
 
 ---
 
-## 🏗️ Estructura del Proyecto
-
-```
-VistaVerde/
-├── Main.java                    # Punto de entrada del sistema
+## Estructura del Proyecto
+Proyecto_VistaVerde/
 ├── src/
-│   ├── model/
-│   │   ├── Casa.java            # Modelo de casa con pagos
-│   │   ├── Propietario.java     # Modelo de propietario
-│   │   ├── Pago.java            # Modelo de pago de cuota
-│   │   └── Condominio.java      # Administra las 30 casas
-│   ├── logic/
-│   │   ├── Validaciones.java    # Validaciones reutilizables
-│   │   ├── Persistencia.java    # Guardar/cargar datos (binario)
-│   │   └── CorreoService.java   # Envío de correos (punto extra)
-│   └── ui/
-│       ├── Tema.java            # Estilos y componentes visuales
-│       ├── PantallaLogin.java
-│       ├── PantallaInicio.java
-│       ├── PantallaRegistroPropietario.java
-│       ├── PantallaRegistroPago.java
-│       ├── PantallaConfiguracionCuota.java
-│       ├── PantallaEstadoCuenta.java
-│       ├── PantallaReporteGeneral.java
-│       └── PantallaCasasMorosas.java
+│   └── proyecto_vistaverde/
+│       ├── Casa.java
+│       ├── Condominio.java
+│       ├── Pago.java
+│       ├── Propietario.java
+│       ├── Persistencia.java
+│       ├── ManejadorErrores.java
+│       ├── EnvioCorreo.java
+│       ├── LabelRedondeado.java
+│       ├── Login.java
+│       ├── Pantalla_Principal.java
+│       ├── Registro_Propietario.java
+│       ├── Registro_Pago.java
+│       ├── Configurar_Cuota.java
+│       ├── Estado_de_Cuenta.java
+│       ├── Reporte_General.java
+│       └── Casas_Morosas.java
 ├── docs/
-│   ├── manual/                  # Manual de usuario en PDF
-│   └── diagramas/               # Diagrama de clases
-├── libs/                        # Librerías externas (.jar)
+│   ├── manual/
+│   │   └── Manual_Usuario_VistaVerde.pdf
+│   └── diagramas/
+│       └── diagrama_clases.png
+├── src/imagenes/
+│   └── (imagenes del sistema)
+├── nbproject/
+├── build.xml
 └── README.md
-```
 
----
-
-## ✨ Puntos Extra Implementados
+## Puntos Extra Implementados
 
 | Funcionalidad | Puntos | Estado |
 |---------------|--------|--------|
-| Persistencia de datos (archivos binarios) | +5 pts | ✅ Implementado |
-| Envío de correo al propietario | +2 pts | ✅ Implementado (requiere config.) |
-| Diseño con framework FlatLaf | +2 pts | ✅ Implementado (requiere jar) |
+| Persistencia de datos con archivos binarios | +5 pts | Implementado |
+| Envio de correo al propietario al registrar pago | +2 pts | Implementado |
+| Diseno con framework FlatLaf | +2 pts | Implementado |
 
-### Configurar envío de correo
-1. Abrir `src/logic/CorreoService.java`
-2. Reemplazar `GMAIL_USER` y `GMAIL_APP_PASSWORD` con las credenciales del condominio
-3. Cambiar `habilitado = false` a `habilitado = true`
-4. Para Gmail: activar "Contraseñas de aplicación" en la cuenta Google
-
----
-
-## 📋 Tablero Jira
-
-> [Link al tablero Jira del equipo aquí]
+### Configurar envio de correo
+1. Abrir `src/proyecto_vistaverde/EnvioCorreo.java`
+2. Reemplazar `CORREO_REMITENTE` con el correo Gmail del condominio
+3. Reemplazar `CONTRASENA` con la contrasena de aplicacion de Gmail
+4. En Gmail: activar verificacion en dos pasos y crear contrasena de aplicacion
 
 ---
 
-## 📐 Contexto del Negocio
+## Tablero Jira
+
+[Ver tablero del proyecto en Jira](https://proyectoprogra12026.atlassian.net/jira/software/projects/KAN/boards/1?atlOrigin=eyJpIjoiYjkxYmZjNmMxM2ViNGUwMjg3ODc0NjU2YTUwNjk1NTkiLCJwIjoiaiJ9)
+
+---
+
+## Contexto del Negocio
 
 | Dato | Valor |
 |------|-------|
 | Nombre del condominio | Vista Verde |
-| Número de casas | 30 (numeradas del 1 al 30) |
+| Numero de casas | 30 (numeradas del 1 al 30) |
 | Cuota mensual inicial | Q1,500.00 |
-| Recaudación esperada | Q45,000.00 mensual |
+| Recaudacion esperada | Q45,000.00 mensual |
 | Tipo de sistema | Escritorio Java Swing |
 
 ---
-
-*Universidad Mariano Gálvez de Guatemala · Facultad de Ingeniería en Sistemas · Programación I · 2026*
